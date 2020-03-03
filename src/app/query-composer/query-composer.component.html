@@ -1,0 +1,12 @@
+
+
+ <mat-tab-group style="overflow: hidden; height: 100%;" animationDuration='0ms'>
+    <mat-tab label="Chunck">
+      <qc-file [chunks_list]="chunks_list" #file fxFlex style="overflow: hidden; height: 100%;">loading</qc-file>
+    </mat-tab>
+    <mat-tab label="Result">
+      <div *ngFor="let item of file.getChunkList()" style="white-space: pre-wrap;">
+        {{createChunk(item) }}
+      </div>
+    </mat-tab>
+</mat-tab-group>

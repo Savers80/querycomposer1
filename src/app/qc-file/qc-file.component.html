@@ -1,0 +1,44 @@
+<mat-sidenav-container style="overflow: hidden;height: 100%;"> 
+  <mat-sidenav position="end" mode="side" [opened]="true" >  
+    <mat-toolbar>
+      <mat-list>
+        <mat-list-item>
+          <button>
+            <mat-icon>extension</mat-icon>
+          </button>
+        </mat-list-item>
+        <mat-list-item>
+            <button>
+                <mat-icon>playlist_play</mat-icon>
+              </button>
+            </mat-list-item>
+            <mat-list-item>
+              <button (click)="addChunk();">
+                <mat-icon>playlist_add</mat-icon>
+              </button>  
+              
+        </mat-list-item>
+      </mat-list>
+      
+    </mat-toolbar>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content style="overflow: hidden;">
+    <mat-tab-group id='chunksId'   style="overflow: hidden;height: inherit;" animationDuration='0ms'>
+      <mat-tab *ngFor="let chunk of chunks_list"  style="overflow: hidden;">
+        <ng-template mat-tab-label >
+          <div fxFlex>
+            <B>{{chunk.alias}}</B>
+            <div>{{chunk.descrizione.substr(0,10)}}</div>
+          </div>
+        </ng-template>
+        <app-query-chunk [chunk]="chunk"  style="overflow: hidden; height: inherit;"></app-query-chunk>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-sidenav-content>
+
+  
+
+</mat-sidenav-container>
+

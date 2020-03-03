@@ -1,0 +1,64 @@
+<div fxLayout="column" fxFlex  style="overflow: hidden;">
+         <div fxFlex='none' fxLayout="column" style="overflow: hidden;">
+              <form>
+                <button (click)="alias_readonly=!alias_readonly;" style='display: inline'>
+                  <mat-icon >edit</mat-icon>
+                </button>
+                  <mat-form-field >
+                    <input matInput #alias placeholder="Table" name="alias" [(ngModel)]="chunk.alias"  [readonly]="alias_readonly" />
+                  </mat-form-field>
+                  <!-- <br>
+                  {{chunk.alias}} -->
+                  <br>
+
+                  <div fxLayout="row"> 
+                    <button (click)="descrizione_readonly=!descrizione_readonly;" fxFlex='initial'>
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                      <textarea  matInput #descrizione  placeholder="Descrizione" name="descrizione" fxFlex fxFlexFill
+                      [(ngModel)]="chunk.descrizione" [readonly]="descrizione_readonly" >
+                    </textarea>
+                  </div>
+
+                 
+                  <br>
+
+                  <textarea #host >{{chunk.query}}</textarea>
+
+              </form>
+              <mat-toolbar>
+                  <mat-toolbar-row>
+                    <button (click)="saveFile();"> 
+                      <mat-icon>extension</mat-icon>
+                    </button>
+                    <button (click)="executeQuery();">
+                      <mat-icon>playlist_play</mat-icon>
+                     </button>
+                     
+                     <button>
+                        <mat-icon>playlist_add</mat-icon>
+                       </button>
+                  </mat-toolbar-row>
+                </mat-toolbar>
+
+            </div>
+
+            <div fxFlex fxLayout="column" style="overflow: hidden;">
+                <table mat-table [dataSource]="datasource" matSort fxFlex style="width: 100%;height: inherit;">
+                    <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        <mat-form-field >
+                          <input matInput placeholder="{{column}}"> 
+                        </mat-form-field>
+                  </th>
+                  <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+                </ng-container>
+                
+                <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+              </table>
+            </div>
+            <div fxFlex='initial'>
+              {{executeQuery_msg}}
+            </div>
+        </div>            
