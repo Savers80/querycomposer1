@@ -7,7 +7,7 @@
     "tslib": "1.11.1",
     "core-js": "2.6.11",
     "zone.js": "0.8.29",
-    "codemirror": "5.52.0",
+    "codemirror": "5.58.2",
     "file-saver": "2.0.2",
     "@types/node": "8.9.5",
     "@angular/cdk": "7.3.7",
